@@ -1,0 +1,52 @@
+.contact {
+  margin-top: 15px;
+}
+
+.contact-header {
+  display: flex;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.contact-arrow {
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform: rotate(-90deg);
+  margin-top: 32px;
+  margin-bottom: 0px;
+}
+
+.contact-content {
+  transition: opacity 0.3s ease;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+.icone {
+  @include image-size(35px, 35px);
+  margin-bottom: -73px;
+}
+
+.contact-title-main {
+  @include text-style(220%);
+  margin-bottom: -10px;
+  margin-top: 30px;
+}
+
+.contact-text {
+  @include text-style(170%);
+  opacity: 0.78;
+  margin-left: 40px;
+  padding-top: 10px;
+}
+
+.contact-text-secondary {
+  opacity: 0.78;
+  @include text-style(150%);
+  margin-left: 40px;
+}
