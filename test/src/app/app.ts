@@ -26,7 +26,7 @@ import { Footer } from './footer/footer';
   selector: 'app-root',
   imports: [RouterOutlet, NgbModule, Header, MainContent, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrls: ['./app.scss']
 })
 export class App {
   protected readonly title = signal('test');

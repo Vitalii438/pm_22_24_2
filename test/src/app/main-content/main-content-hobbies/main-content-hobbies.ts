@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-main-content-hobbies',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './main-content-hobbies.html',
-  styleUrl: './main-content-hobbies.scss',
+  styleUrls: ['./main-content-hobbies.scss'],
 })
 export class MainContentHobbies {
-
+@Input() hobbies: string[] = [];
 }
+
+

@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Person } from '../header';
 
 @Component({
   selector: 'app-header-people',
   imports: [],
   templateUrl: './header-people.html',
-  styleUrl: './header-people.scss',
+  styleUrls: ['./header-people.scss'],
 })
 export class HeaderPeople {
-
+  @Input() person1!: Person;
 }
+
+
+
+ 
+//console.log(person1);

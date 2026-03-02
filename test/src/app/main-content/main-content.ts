@@ -14,5 +14,5 @@ import { MainContentSkills } from './main-content-skills/main-content-skills';
   styleUrl: './main-content.scss',
 })
 export class MainContent {
-
+hobbies: string[] = ['WRITING', 'READING BOOKS', 'PLAYING FOOTBALL', 'PHOTOGRAPHY', 'TRAVELING'];
 }

@@ -1,3 +1,9 @@
+@import '../../../styles.scss';
+
+.hobbies-container {
+ width: 340px;
+}
+
 .hobbies-shape {
   @include image-size(170px, 21px);
   margin-bottom: -190px;

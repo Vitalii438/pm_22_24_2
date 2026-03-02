@@ -11,5 +11,24 @@ import { HeaderPeople } from './header-people/header-people';
   styleUrl: './header.scss',
 })
 export class Header {
-
+person1: Person = new Person('NEAL', 'BRIAN S.');
 }
+
+export interface People {
+  name: string;
+  surname: string;
+}
+
+export class Person implements People {
+  name: string;
+  surname: string;
+
+  constructor(name: string, surname: string) {
+    this.name = name;
+    this.surname = surname;
+  }
+}
+
+//const person1 = new Person('NEAL', 'BRIAN S.');
+
+

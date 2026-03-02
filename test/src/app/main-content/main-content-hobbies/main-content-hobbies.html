@@ -1,5 +1,7 @@
 <div class="col-4">
   <h2 class="montserrat-black hobbies-title-main">HOBBIES</h2>
-  <img class="hobbies-shape" src="/svg/shape_1.svg" alt="shape" />
-  <div id="hobbiesContainer" class="row-12"></div>
+  <img class="hobbies-shape" src="assets/svg/shape_1.svg" alt="shape" />
+  <div class="row-12 hobbies-container">
+    <h3 *ngFor="let hobby of hobbies" class="lato-bold hobbies-title-secondary underlined">{{ hobby }}</h3>
+  </div>
 </div>

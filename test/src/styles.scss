@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @mixin image-size($width, $height, $fit: fill) {
   width: $width;
   height: $height;
@@ -14,6 +15,7 @@
   border: $size solid $color;
   border-radius: $radius;
 }
+
 
 $title-font-color: white;
 
@@ -34,11 +36,13 @@ body {
 .footer-top {
   margin-top: 25px;
   margin-bottom: 50px;
+  justify-content: center;
 }
 
 .footer-main {
   margin-top: 25px;
   margin-bottom: 50px;
+  justify-content: center;
 }
 
 .lato-thin {

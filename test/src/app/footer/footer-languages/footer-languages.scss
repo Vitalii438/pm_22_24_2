@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .languages-shape-long {
   @include image-size(200px, 20px);
   display: block;
