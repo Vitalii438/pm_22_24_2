@@ -14,5 +14,12 @@ import { MainContentSkills } from './main-content-skills/main-content-skills';
   styleUrl: './main-content.scss',
 })
 export class MainContent {
+  Clicked(message: string) {
+    console.log('Отримано повідомлення:', message);
+  }
+
 hobbies: string[] = ['WRITING', 'READING BOOKS', 'PLAYING FOOTBALL', 'PHOTOGRAPHY', 'TRAVELING'];
-}
+} 
+
+
+// 'WRITING', 'READING BOOKS', 'PLAYING FOOTBALL', 'PHOTOGRAPHY', 'TRAVELING'

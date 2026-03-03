@@ -1,7 +1,19 @@
 <div class="col-4">
   <h2 class="montserrat-black hobbies-title-main">HOBBIES</h2>
+
+@if (hobbies.length > 0) {
+
+
   <img class="hobbies-shape" src="assets/svg/shape_1.svg" alt="shape" />
   <div class="row-12 hobbies-container">
-    <h3 *ngFor="let hobby of hobbies" class="lato-bold hobbies-title-secondary underlined">{{ hobby }}</h3>
+
+    @for (hobby of hobbies; track hobby) {
+      <h3 class="lato-bold hobbies-title-secondary underlined">{{ hobby }}</h3>
+    }
   </div>
+}@else {
+  <p class="lato-regular hobbies-title-secondary">No hobbies found.</p>
+}
+    <!-- <h3 *ngFor="let hobby of hobbies" class="lato-bold hobbies-title-secondary underlined">{{ hobby }}</h3> -->
+
 </div>
