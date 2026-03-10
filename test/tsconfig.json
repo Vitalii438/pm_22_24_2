@@ -13,11 +13,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    //"module": "preserve"
-     "module": "ESNext",
-      //"module": "CommonJS",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
+    // "module": "preserve"
+  "module": "ESNext",
+  // "module": "CommonJS",
+  "moduleResolution": "bundler",
+    "esModuleInterop": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

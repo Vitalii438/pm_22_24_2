@@ -1,3 +1,8 @@
 {
-  "message": "Сервер працює!"
+  "person": [
+    {
+      "name": "NEAL",
+      "surname": "BRIAN S."
+    }
+  ]
 }

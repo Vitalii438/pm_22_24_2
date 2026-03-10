@@ -1,86 +1,40 @@
 import express from 'express';
 import fs from 'fs';
-import bodyParser from 'body-parser'; 
+import path from 'path';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 
-
 app.use(bodyParser.json());
+app.use(cors({ origin: ['http://localhost:4200', 'http://127.0.0.1:4200'] }));
 
-const filePath = './data.json';
+const filePath = path.join(__dirname, '..', 'server', 'data.json');
+const ndjsonFile = path.join(__dirname, '..', 'server', 'messages.ndjson');
 
 app.get('/data', (req, res) => {
+  console.log('GET /data requested, reading', filePath);
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
+      console.error('Error reading data file:', err);
       res.status(500).send('Помилка читання файлу');
       return;
     }
-    res.json(JSON.parse(data));
-    return;
-  });
-});
-
-
-app.post('/data', (req, res) => {
-  fs.writeFile(filePath, JSON.stringify(req.body), (err) => {
-    if (err) {
-      res.status(500).send('Помилка запису');
-      return;
+    try {
+      const parsed = JSON.parse(data);
+      res.json(parsed);
+    } catch (parseErr) {
+      console.error('Error parsing JSON:', parseErr);
+      res.status(500).send('Помилка парсингу JSON');
     }
-    res.send('Дані збережено');
-    return;
   });
 });
 
-
-app.listen(5000, () => console.log('Сервер працює на порту 5000'));
-
-
-
-// import express from 'express';
-
-// const app = express();
-// const port = 5000;
-
-// // app.get('/data', (req, res) => {
-// //   res.json({ message: 'Сервер працює!' });
-// // });
-
-// app.get('/data', (req, res) => {
-//   res.json({ message: 'Сервер працює!' });
-// });
-
-// app.listen(port, () => {
-//   console.log(`✅ Server running at http://localhost:${port}`);
-// });
-
-// import cors from 'cors';
-// import express from 'express';
-// import fs from 'fs';
-// import bodyParser from 'body-parser';
-
-// const app = express();
-// const port = 5000;
-// const filePath = __dirname + '/data.json';
-
-// app.use(cors());
-// app.use(bodyParser.json());
-
-// // GET: повертає дані
-// app.get('/data', (req, res) => {
-//   fs.readFile(filePath, 'utf8', (err, data) => {
-//     if (err) {
-//       res.status(500).send('Помилка читання файлу');
-//       return;
-//     }
-//     res.json(JSON.parse(data));
-//   });
-// });
-
-// // POST: записує дані
 // app.post('/data', (req, res) => {
-//   fs.writeFile(filePath, JSON.stringify(req.body), (err) => {
+//   console.log('POST /data received, writing to', filePath);
+//   fs.writeFile(filePath, JSON.stringify(req.body, null, 2), (err) => {
 //     if (err) {
+//       console.error('Error writing data file:', err);
 //       res.status(500).send('Помилка запису');
 //       return;
 //     }
@@ -88,37 +42,16 @@ app.listen(5000, () => console.log('Сервер працює на порту 50
 //   });
 // });
 
-// app.listen(port, () => {
-//   console.log(`✅ Server running at http://localhost:${port}`);
-// });
+app.post('/data', (req, res) => {
+  const entry = Object.assign({}, req.body, { time: new Date().toISOString() });
+  const line = JSON.stringify(entry) + '\n';
+  fs.appendFile(ndjsonFile, line, (err) => {
+    if (err) {
+      console.error('Error writing data file:', err);
+      return res.status(500).send('Помилка запису');
+    }
+    res.send('Дані збережено');
+  });
+});
 
-// {
-// "person": [
-//      {
-//         "name": "NEAL",
-//         "surname": "BRIAN S."
-//     }
-//     ]
-// }
-
-
-
-
-
-
-
-// import express from 'express';
-// import http from 'http';
-
-// const app = express();
-// const port = 5000;
-
-// app.get('/data', (req, res) => {
-//   res.json({ message: 'Сервер працює!' });
-// });
-
-// const server = http.createServer(app);
-// console.log("🚀 Starting server...");
-// server.listen(port, () => {
-//   console.log(`✅ Server running at http://localhost:${port}`);
-// });
+app.listen(5000, () => console.log('Сервер працює на порту 5000'));

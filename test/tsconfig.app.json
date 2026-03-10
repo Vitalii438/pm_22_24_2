@@ -4,8 +4,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+  "module": "ESNext",
+  "moduleResolution": "bundler",
     "target": "ES2022",
 
     "types": []

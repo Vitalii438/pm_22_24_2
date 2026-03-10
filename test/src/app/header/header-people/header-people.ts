@@ -11,13 +11,18 @@ import { Api } from '../../api';
 export class HeaderPeople implements OnInit {
   @Input() person1!: Person;
 
-  people: any = [];
+  // store a single person object for the template
+  people: any = {};
 
   constructor(private api: Api) {}
 
   ngOnInit(): void {
     this.api.getData().subscribe({
-      next: (res) => this.people = res.person,
+      next: (res) => {
+        // API returns { person: [...] } — take the first element (if any)
+        this.people = (res && res.person && res.person.length) ? res.person[0] : {};
+        console.log('HeaderPeople loaded person:', this.people);
+      },
       error: (err) => console.error('Помилка отримання даних:', err)
     });
   }
