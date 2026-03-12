@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Person } from '../header';
 import { Api } from '../../api';
 
@@ -11,17 +11,17 @@ import { Api } from '../../api';
 export class HeaderPeople implements OnInit {
   @Input() person1!: Person;
 
-  // store a single person object for the template
   people: any = {};
 
-  constructor(private api: Api) {}
+  constructor(private api: Api, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.api.getData().subscribe({
       next: (res) => {
-        // API returns { person: [...] } — take the first element (if any)
         this.people = (res && res.person && res.person.length) ? res.person[0] : {};
         console.log('HeaderPeople loaded person:', this.people);
+
+        try { this.cdr.detectChanges(); } catch (e) {}
       },
       error: (err) => console.error('Помилка отримання даних:', err)
     });

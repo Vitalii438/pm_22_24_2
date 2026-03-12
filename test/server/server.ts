@@ -30,18 +30,6 @@ app.get('/data', (req, res) => {
   });
 });
 
-// app.post('/data', (req, res) => {
-//   console.log('POST /data received, writing to', filePath);
-//   fs.writeFile(filePath, JSON.stringify(req.body, null, 2), (err) => {
-//     if (err) {
-//       console.error('Error writing data file:', err);
-//       res.status(500).send('Помилка запису');
-//       return;
-//     }
-//     res.send('Дані збережено');
-//   });
-// });
-
 app.post('/data', (req, res) => {
   const entry = Object.assign({}, req.body, { time: new Date().toISOString() });
   const line = JSON.stringify(entry) + '\n';
@@ -50,7 +38,7 @@ app.post('/data', (req, res) => {
       console.error('Error writing data file:', err);
       return res.status(500).send('Помилка запису');
     }
-    res.send('Дані збережено');
+    res.send({ message: 'Дані збережено' });
   });
 });
 

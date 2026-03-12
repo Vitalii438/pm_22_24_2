@@ -7,24 +7,25 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./main-content-contact.scss'],
 })
 export class MainContentContact {
-  @Output() clicked = new EventEmitter<string>(); 
+  @Output() clicked = new EventEmitter<string>();
 
-  onButtonClick() {
+  onToggle(event: Event) {
     this.clicked.emit('Кнопку натиснули!');
 
-    const toggleBlocks: NodeListOf<HTMLElement> = document.querySelectorAll(".contact");
+    const arrow = event.currentTarget as HTMLElement | null;
+    if (!arrow) return;
 
-    toggleBlocks.forEach((block: HTMLElement) => {
-      const arrow = block.querySelector(".contact-arrow") as HTMLElement | null;
-      const content = block.querySelector(".contact-content") as HTMLElement | null;
+    const contact = arrow.closest('.contact') as HTMLElement | null;
+    if (!contact) {
+      const content = arrow.parentElement?.parentElement?.querySelector('.contact-content') as HTMLElement | null;
+      if (content) content.classList.toggle('hidden');
+      arrow.classList.toggle('rotated');
+      return;
+    }
 
-      if (arrow && content) {
-        arrow.addEventListener("click", () => {
-          content.classList.toggle("hidden");
-          arrow.classList.toggle("rotated");
-        });
-      }
-    });
+    const content = contact.querySelector('.contact-content') as HTMLElement | null;
+    if (content) content.classList.toggle('hidden');
+    arrow.classList.toggle('rotated');
   }
 }
 
