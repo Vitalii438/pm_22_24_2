@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Person } from '../header';
-import { Api } from '../../api';
+import { Api } from '../../api'; 
 
 @Component({
   selector: 'app-header-people',

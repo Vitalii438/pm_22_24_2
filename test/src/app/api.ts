@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 @Injectable({
   providedIn: 'root',
 })
-export class Api {
+export class Api { 
   private apiUrl = 'http://localhost:5000';
 
   constructor(private http: HttpClient) {}
@@ -20,8 +20,6 @@ export class Api {
 //   saveData(data: any): Observable<any> {
 //     return this.http.post(`${this.apiUrl}/data`, data);
 //   }
-
-
 
   getData(): Observable<any> {
     return this.http.get(`${this.apiUrl}/data`).pipe(
