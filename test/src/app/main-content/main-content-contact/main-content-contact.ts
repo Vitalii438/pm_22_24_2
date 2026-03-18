@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
+ 
 @Component({
   selector: 'app-main-content-contact',
   imports: [],
