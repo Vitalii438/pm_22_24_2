@@ -10,6 +10,7 @@ import { MainContentSkills } from './main-content-skills/main-content-skills';
 
 @Component({
   selector: 'app-main-content',
+  standalone: true,
   imports: [MainContentContact, MainContentEducation, MainContentExperience, MainContentHobbies, MainContentReferences, MainContentSkills],
   templateUrl: './main-content.html',
   styleUrls: ['./main-content.scss'],
