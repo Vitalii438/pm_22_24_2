@@ -23,6 +23,8 @@ export class FormModal {
 
   constructor(private dialogRef: MatDialogRef<FormModal>, private api: Api, private router: Router) {}
 
+  loggedIn = localStorage.getItem('loggedIn') === 'true';
+
 onSubmit() {
     if (this.form.valid) {
       const data = this.form.value;
@@ -41,6 +43,14 @@ onSubmit() {
     }
   }
 
+logout() {
+  localStorage.removeItem('loggedIn');
+
+  this.router.navigate(['']);
+  this.dialogRef.close();
+  //location.reload();
+  console.log('Користувач вийшов з акаунту');
+}
 
   close() {
     this.dialogRef.close();

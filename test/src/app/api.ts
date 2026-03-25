@@ -13,14 +13,6 @@ export class Api {
 
   constructor(private http: HttpClient) {}
 
-// getData(): Observable<any> {
-//     return this.http.get(`${this.apiUrl}/data`);
-//   }
-
-//   saveData(data: any): Observable<any> {
-//     return this.http.post(`${this.apiUrl}/data`, data);
-//   }
-
   getData(): Observable<any> {
     return this.http.get(`${this.apiUrl}/data`).pipe(
       catchError((error) => {
@@ -33,5 +25,4 @@ export class Api {
   postData(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/data`, data);
   }
-  
 }
