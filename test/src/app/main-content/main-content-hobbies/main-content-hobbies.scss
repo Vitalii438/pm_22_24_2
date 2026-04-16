@@ -1,12 +1,12 @@
 @import '../../../styles.scss';
 
-.hobbies-container {
+.hobbies-container { 
  width: 340px;
 }
 
 .hobbies-shape {
   @include image-size(170px, 21px);
-  margin-bottom: -190px;
+  margin-bottom: -160px;
   margin-left: 20px;
   rotate: 90deg;
 }
